@@ -3,10 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:login_cubit_test/cubit/user_cubit.dart';
 import 'package:login_cubit_test/cubit/theme_cubit.dart';
+
 import 'package:login_cubit_test/models/user.dart';
-
 import 'package:login_cubit_test/repository/auth_repository.dart';
-
 import 'package:login_cubit_test/services/analytics_service.dart';
 
 class HomePage extends StatelessWidget {

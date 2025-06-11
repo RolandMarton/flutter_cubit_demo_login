@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:login_cubit_test/controllers/form_controller.dart';
 
 import 'package:login_cubit_test/cubit/user_cubit.dart';
 import 'package:login_cubit_test/cubit/auth/login_cubit.dart';
@@ -12,6 +11,7 @@ import 'package:login_cubit_test/repository/user_repository.dart';
 import 'package:login_cubit_test/models/user.dart';
 import 'package:login_cubit_test/enums/login_status_enum.dart';
 import 'package:login_cubit_test/services/analytics_service.dart';
+import 'package:login_cubit_test/controllers/form_controller.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
