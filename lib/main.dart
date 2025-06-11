@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:login_cubit_test/cubit/user_cubit.dart';
-import 'package:login_cubit_test/cubit/theme_cubit.dart';
+import 'package:login_cubit_test/cubit/theme/theme_cubit.dart';
 
 import 'package:login_cubit_test/repository/auth_repository.dart';
 import 'package:login_cubit_test/repository/user_repository.dart';
@@ -12,7 +12,6 @@ import 'package:login_cubit_test/screens/home_screen.dart';
 import 'package:login_cubit_test/screens/login_screen.dart';
 
 import 'package:login_cubit_test/services/analytics_service.dart';
-import 'package:login_cubit_test/services/theme_service.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,13 +30,12 @@ class MyApp extends StatelessWidget {
 
         /// [Global Services]
         RepositoryProvider(create: (_) => AnalyticsService()),
-        RepositoryProvider(create: (_) => ThemeService()),
       ],
       child: MultiBlocProvider(
         providers: [
           /// [Global Cubits]
           BlocProvider(create: (context) => UserCubit(context.read<AuthRepository>())),
-          BlocProvider(create: (context) => ThemeCubit(context.read<ThemeService>(), context.read<AnalyticsService>())),
+          BlocProvider(create: (context) => ThemeCubit(context.read<AnalyticsService>())),
         ],
         child: BlocBuilder<ThemeCubit, ThemeMode>(
           builder: (context, themeMode) {
