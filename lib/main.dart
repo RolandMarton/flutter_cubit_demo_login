@@ -6,6 +6,7 @@ import 'package:login_cubit_test/cubit/theme_cubit.dart';
 
 import 'package:login_cubit_test/repository/auth_repository.dart';
 import 'package:login_cubit_test/repository/user_repository.dart';
+import 'package:login_cubit_test/screens/admin_screen.dart';
 
 import 'package:login_cubit_test/screens/home_screen.dart';
 import 'package:login_cubit_test/screens/login_screen.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           /// [Global Cubits]
-          BlocProvider(create: (_) => UserCubit()),
+          BlocProvider(create: (context) => UserCubit(context.read<AuthRepository>())),
           BlocProvider(create: (context) => ThemeCubit(context.read<ThemeService>(), context.read<AnalyticsService>())),
         ],
         child: BlocBuilder<ThemeCubit, ThemeMode>(
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
 
               /// [Route management]
               initialRoute: '/',
-              routes: {'/': (_) => LoginPage(), '/home': (_) => const HomePage()},
+              routes: {'/': (_) => LoginPage(), '/home': (_) => const HomePage(), '/admin': (_) => const AdminPage()},
             );
           },
         ),
