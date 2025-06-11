@@ -26,7 +26,7 @@ class _AdminPageState extends State<AdminPage> {
 
   Future<void> _clearLogs() async {
     await context.read<AnalyticsService>().clearAllLogs();
-    await _loadLogs(); // refresh after clearing
+    await _loadLogs();
   }
 
   @override
