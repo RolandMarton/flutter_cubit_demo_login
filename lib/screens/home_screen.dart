@@ -30,6 +30,26 @@ class HomePage extends StatelessWidget {
             children: [
               if (user != null) Text('Welcome, ${user.username} (${user.email})'),
               const SizedBox(height: 20),
+
+              /// [Navigation to Admin page]
+              if (user != null && user.username == 'admin') ...[
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/admin');
+                  },
+                  child: const Text('Admin Page'),
+                ),
+
+                const SizedBox(height: 20),
+              ],
+
+              ElevatedButton(
+                onPressed: () => context.read<ThemeCubit>().toggleTheme(),
+                child: const Text('Toggle Theme'),
+              ),
+
+              const SizedBox(height: 20),
+
               ElevatedButton(
                 onPressed: () async {
                   await context.read<AuthRepository>().logout();
@@ -40,11 +60,6 @@ class HomePage extends StatelessWidget {
                   }
                 },
                 child: const Text('Logout'),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () => context.read<ThemeCubit>().toggleTheme(),
-                child: const Text('Toggle Theme'),
               ),
             ],
           ),
