@@ -5,6 +5,5 @@ class ThemeService {
 
   void toggleTheme() {
     currentTheme = currentTheme == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
-    print("ThemeController: Theme switched to $currentTheme");
   }
 }
